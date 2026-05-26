@@ -11,7 +11,10 @@ export const Route = createFileRoute("/portfolio")({
   head: () => ({
     meta: [
       { title: "Portfolio — Delight Tech Network" },
-      { name: "description", content: "Selected projects across web, branding, print and tech repair." },
+      {
+        name: "description",
+        content: "Selected projects across web, branding, print and tech repair.",
+      },
     ],
   }),
   component: PortfolioPage,
@@ -38,8 +41,12 @@ function PortfolioPage() {
       <section className="mx-auto max-w-7xl px-4 pt-8 pb-12 text-center">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.2em] text-primary">Our work</p>
-          <h1 className="mt-3 text-4xl md:text-6xl font-bold">Projects we're <span className="text-gradient">proud of</span></h1>
-          <p className="mx-auto mt-5 max-w-2xl text-muted-foreground">A curated look at recent launches across web, branding, print and repair.</p>
+          <h1 className="mt-3 text-4xl md:text-6xl font-bold">
+            Projects we're <span className="text-gradient">proud of</span>
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl text-muted-foreground">
+            A curated look at recent launches across web, branding, print and repair.
+          </p>
         </Reveal>
       </section>
 
@@ -54,7 +61,12 @@ function PortfolioPage() {
                   cat === c ? "text-white" : "glass hover:text-primary"
                 }`}
               >
-                {cat === c && <motion.span layoutId="cat-pill" className="absolute inset-0 rounded-full bg-gradient-brand" />}
+                {cat === c && (
+                  <motion.span
+                    layoutId="cat-pill"
+                    className="absolute inset-0 rounded-full bg-gradient-brand"
+                  />
+                )}
                 <span className="relative">{c}</span>
               </button>
             ))}
@@ -74,11 +86,15 @@ function PortfolioPage() {
                 onClick={() => setOpen(projects.indexOf(p))}
                 className={`group text-left relative overflow-hidden rounded-3xl glass aspect-[4/5] ${i % 5 === 0 ? "sm:row-span-2 sm:aspect-[4/9]" : ""}`}
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${grads[i % grads.length]} opacity-80`} />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${grads[i % grads.length]} opacity-80`}
+                />
                 <div className="absolute inset-0 grid-pattern opacity-20" />
                 <div className="absolute inset-0 p-6 flex flex-col justify-between text-white">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] uppercase tracking-widest bg-black/30 backdrop-blur px-2.5 py-1 rounded-full">{p.category}</span>
+                    <span className="text-[10px] uppercase tracking-widest bg-black/30 backdrop-blur px-2.5 py-1 rounded-full">
+                      {p.category}
+                    </span>
                     <ArrowUpRight className="size-5 opacity-0 group-hover:opacity-100 transition" />
                   </div>
                   <div>
@@ -98,7 +114,9 @@ function PortfolioPage() {
                 <div className="text-3xl md:text-4xl font-bold text-gradient">
                   <AnimatedCounter value={s.value} suffix={s.suffix} />
                 </div>
-                <div className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">{s.label}</div>
+                <div className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">
+                  {s.label}
+                </div>
               </div>
             </Reveal>
           ))}
@@ -111,14 +129,18 @@ function PortfolioPage() {
         <DialogContent className="max-w-2xl glass border-border/60">
           {open !== null && (
             <>
-              <div className={`h-56 rounded-xl bg-gradient-to-br ${grads[open % grads.length]} relative overflow-hidden`}>
+              <div
+                className={`h-56 rounded-xl bg-gradient-to-br ${grads[open % grads.length]} relative overflow-hidden`}
+              >
                 <div className="absolute inset-0 grid-pattern opacity-20" />
               </div>
               <DialogTitle className="text-2xl">{projects[open].title}</DialogTitle>
               <p className="text-sm text-muted-foreground">{projects[open].description}</p>
               <div className="flex flex-wrap gap-2 mt-1">
                 {projects[open].tags.map((t) => (
-                  <span key={t} className="rounded-full glass px-3 py-1 text-xs">{t}</span>
+                  <span key={t} className="rounded-full glass px-3 py-1 text-xs">
+                    {t}
+                  </span>
                 ))}
               </div>
             </>

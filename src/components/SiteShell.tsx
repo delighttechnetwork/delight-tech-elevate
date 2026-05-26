@@ -27,7 +27,9 @@ function BackToTop() {
     <AnimatePresence>
       {show && (
         <motion.button
-          initial={{ opacity: 0, scale: 0.6 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.6 }}
+          initial={{ opacity: 0, scale: 0.6 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.6 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="fixed bottom-24 right-5 z-40 grid h-11 w-11 place-items-center rounded-full glass shadow-lg hover:text-primary"
           aria-label="Back to top"
@@ -42,13 +44,20 @@ function BackToTop() {
 function FloatingContact() {
   return (
     <div className="fixed bottom-5 right-5 z-40 flex flex-col gap-2">
-      <a href={`https://wa.me/${company.whatsappIntl}`} target="_blank" rel="noreferrer"
-         aria-label="WhatsApp"
-         className="group grid h-12 w-12 place-items-center rounded-full bg-[#25D366] text-white shadow-xl hover:scale-105 transition">
+      <a
+        href={`https://wa.me/${company.whatsappIntl}`}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="WhatsApp"
+        className="group grid h-12 w-12 place-items-center rounded-full bg-[#25D366] text-white shadow-xl hover:scale-105 transition"
+      >
         <MessageCircle className="size-5" />
       </a>
-      <a href={`tel:${company.phone}`} aria-label="Call"
-         className="grid h-12 w-12 place-items-center rounded-full bg-gradient-brand text-white shadow-xl hover:scale-105 transition">
+      <a
+        href={`tel:${company.phone}`}
+        aria-label="Call"
+        className="grid h-12 w-12 place-items-center rounded-full bg-gradient-brand text-white shadow-xl hover:scale-105 transition"
+      >
         <Phone className="size-5" />
       </a>
     </div>

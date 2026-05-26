@@ -6,7 +6,15 @@ const variants: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
-export function Reveal({ children, delay = 0, className }: { children: ReactNode; delay?: number; className?: string }) {
+export function Reveal({
+  children,
+  delay = 0,
+  className,
+}: {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+}) {
   return (
     <motion.div
       variants={variants}
@@ -29,7 +37,8 @@ export function AnimatedCounter({ value, suffix = "" }: { value: number; suffix?
       viewport={{ once: true }}
       className="tabular-nums"
     >
-      <Counter to={value} />{suffix}
+      <Counter to={value} />
+      {suffix}
     </motion.span>
   );
 }

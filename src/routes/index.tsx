@@ -1,7 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/sections/Hero";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
-import { About, WhyUs, FeaturedProjects, Testimonials, FounderSpotlight, CtaBanner } from "@/components/sections/Common";
+import {
+  About,
+  WhyUs,
+  FeaturedProjects,
+  Testimonials,
+  FounderSpotlight,
+  CtaBanner,
+} from "@/components/sections/Common";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [{ title: "Delight Tech Network — Lighting Through Technology" }] }),
