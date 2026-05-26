@@ -68,6 +68,7 @@ function ServicesPage() {
         ))}
       </section>
 
+      <ServiceCalculator />
       <FAQSection />
       <CtaBanner />
     </>
