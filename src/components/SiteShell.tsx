@@ -5,6 +5,7 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { company } from "@/lib/site";
 import { useRouterState } from "@tanstack/react-router";
+import { LiveChat } from "./LiveChat";
 
 function ScrollProgress() {
   const { scrollYProgress } = useScroll();
@@ -76,6 +77,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <Footer />
       <BackToTop />
       <FloatingContact />
+      <LiveChat />
     </>
   );
 }

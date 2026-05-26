@@ -4,6 +4,7 @@ import { Check, ArrowRight } from "lucide-react";
 import { services } from "@/lib/site";
 import { Reveal } from "@/components/Reveal";
 import { FAQSection, CtaBanner } from "@/components/sections/Common";
+import { ServiceCalculator } from "@/components/sections/ServiceCalculator";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -67,6 +68,7 @@ function ServicesPage() {
         ))}
       </section>
 
+      <ServiceCalculator />
       <FAQSection />
       <CtaBanner />
     </>
