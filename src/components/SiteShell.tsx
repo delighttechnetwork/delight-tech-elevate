@@ -77,6 +77,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <Footer />
       <BackToTop />
       <FloatingContact />
+      <LiveChat />
     </>
   );
 }
