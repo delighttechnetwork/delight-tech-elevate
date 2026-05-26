@@ -66,7 +66,7 @@ function PostPage() {
         <Reveal delay={0.1} className="mt-10">
           <div className="prose prose-invert max-w-none space-y-5 text-[15px] leading-relaxed">
             <p className="text-lg text-muted-foreground">{post.excerpt}</p>
-            {post.content.map((b, i) => {
+            {post.content.map((b: { type: string; text: string }, i: number) => {
               if (b.type === "h2") return <h2 key={i} className="mt-10 text-2xl font-bold">{b.text}</h2>;
               if (b.type === "quote") return (
                 <blockquote key={i} className="border-l-2 border-primary pl-4 my-6 italic text-foreground/90">
