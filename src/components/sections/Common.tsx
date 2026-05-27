@@ -1,6 +1,16 @@
 import { Reveal, AnimatedCounter } from "@/components/Reveal";
-import { stats, testimonials, company, faqs } from "@/lib/site";
-import { Award, Rocket, ShieldCheck, Users, Quote, Mail, Phone, MapPin } from "lucide-react";
+import { stats, testimonials, company, faqs, blogPosts } from "@/lib/site";
+import {
+  Award,
+  Rocket,
+  ShieldCheck,
+  Users,
+  Quote,
+  Mail,
+  Phone,
+  MapPin,
+  ArrowRight,
+} from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import founder from "@/assets/founder.jpg";
 import {
@@ -233,6 +243,47 @@ export function FounderSpotlight() {
             </Link>
           </div>
         </Reveal>
+      </div>
+    </section>
+  );
+}
+
+export function RecentPosts() {
+  return (
+    <section className="py-24 mx-auto max-w-7xl px-4">
+      <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div className="max-w-xl">
+          <p className="text-xs uppercase tracking-[0.2em] text-primary">Insights</p>
+          <h2 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">
+            Recent <span className="text-gradient">Insights</span>
+          </h2>
+        </div>
+        <Link
+          to="/blog"
+          className="text-sm font-bold uppercase tracking-widest text-primary flex items-center gap-2 group"
+        >
+          View all posts <ArrowRight className="size-4 group-hover:translate-x-1 transition" />
+        </Link>
+      </Reveal>
+
+      <div className="grid md:grid-cols-3 gap-8">
+        {blogPosts.slice(0, 3).map((post, i) => (
+          <Reveal key={post.slug} delay={i * 0.1}>
+            <Link to="/blog" className="group block">
+              <div className="aspect-[16/9] rounded-2xl bg-muted relative overflow-hidden mb-6">
+                <div className="absolute inset-0 bg-gradient-brand opacity-10 group-hover:opacity-20 transition-opacity" />
+              </div>
+              <div className="flex items-center gap-3 text-[10px] text-muted-foreground uppercase tracking-widest mb-3">
+                <span>{post.date}</span>
+                <span className="size-1 rounded-full bg-border" />
+                <span>{post.readTime}</span>
+              </div>
+              <h3 className="text-xl font-bold leading-snug group-hover:text-primary transition-colors">
+                {post.title}
+              </h3>
+            </Link>
+          </Reveal>
+        ))}
       </div>
     </section>
   );

@@ -32,6 +32,13 @@ export const company = {
     { day: "Saturday", time: "10:00 AM – 4:00 PM" },
     { day: "Sunday", time: "Closed" },
   ],
+  socials: {
+    facebook: "https://www.facebook.com/profile.php?id=61586658868551",
+    instagram: "https://www.instagram.com/john_adeagbo?igsh=em5zZ2ZrMnB1MWd2",
+    tiktok: "https://www.tiktok.com/@john.adeagbo?_r=1&_t=ZS-96dikz6ULh7",
+    linkedin:
+      "https://www.linkedin.com/in/john-adeagbo-85182325a?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+  },
 };
 
 export type Service = {
@@ -395,4 +402,51 @@ export const stats = [
   { label: "Happy Clients", value: 180, suffix: "+" },
   { label: "Years of Excellence", value: 6, suffix: "" },
   { label: "Cities Served", value: 12, suffix: "" },
+];
+
+export type BlogPost = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  category: string;
+  date: string;
+  author: string;
+  readTime: string;
+  image?: string;
+};
+
+export const blogPosts: BlogPost[] = [
+  {
+    slug: "modern-branding-nigeria-2025",
+    title: "The Evolution of Digital Branding in Nigeria",
+    excerpt:
+      "Why static logos are no longer enough for Nigerian businesses competing on a global stage.",
+    content: "Full content here...",
+    category: "Branding",
+    date: "May 15, 2025",
+    author: company.founder,
+    readTime: "5 min read",
+  },
+  {
+    slug: "cyber-security-for-small-business",
+    title: "Protecting Your Small Business From Local Cyber Threats",
+    excerpt: "Essential security practices every business owner in Ibadan and Lagos should know.",
+    content: "Full content here...",
+    category: "Security",
+    date: "May 10, 2025",
+    author: company.founder,
+    readTime: "8 min read",
+  },
+  {
+    slug: "choosing-the-right-web-stack",
+    title: "How We Choose the Right Tech Stack for Your Project",
+    excerpt:
+      "A look inside our engineering process — why we choose speed and scalability over trends.",
+    content: "Full content here...",
+    category: "Technology",
+    date: "May 05, 2025",
+    author: company.founder,
+    readTime: "6 min read",
+  },
 ];

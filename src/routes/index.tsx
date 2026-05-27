@@ -7,6 +7,7 @@ import {
   FeaturedProjects,
   Testimonials,
   FounderSpotlight,
+  RecentPosts,
   CtaBanner,
 } from "@/components/sections/Common";
 
@@ -24,6 +25,7 @@ function Home() {
       <WhyUs />
       <FeaturedProjects />
       <Testimonials />
+      <RecentPosts />
       <FounderSpotlight />
       <CtaBanner />
     </>

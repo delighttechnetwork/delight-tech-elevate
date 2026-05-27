@@ -1,7 +1,14 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Music2 } from "lucide-react";
 import { company, services } from "@/lib/site";
 import logo from "@/assets/logo.jpg";
+
+const socialLinks = [
+  { icon: Facebook, href: company.socials.facebook, label: "Facebook" },
+  { icon: Instagram, href: company.socials.instagram, label: "Instagram" },
+  { icon: Music2, href: company.socials.tiktok, label: "TikTok" },
+  { icon: Linkedin, href: company.socials.linkedin, label: "LinkedIn" },
+];
 
 export function Footer() {
   return (
@@ -22,14 +29,16 @@ export function Footer() {
             experiences for businesses and individuals.
           </p>
           <div className="mt-5 flex gap-2">
-            {[Facebook, Instagram, Linkedin, Twitter].map((Icon, i) => (
+            {socialLinks.map((social) => (
               <a
-                key={i}
-                href="#"
-                aria-label="Social"
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
                 className="grid h-9 w-9 place-items-center rounded-full glass hover:text-primary transition"
               >
-                <Icon className="size-4" />
+                <social.icon className="size-4" />
               </a>
             ))}
           </div>
@@ -64,6 +73,11 @@ export function Footer() {
             <li>
               <Link to="/services" className="hover:text-foreground">
                 All Services
+              </Link>
+            </li>
+            <li>
+              <Link to="/blog" className="hover:text-foreground">
+                Blog
               </Link>
             </li>
             <li>

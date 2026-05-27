@@ -12,6 +12,7 @@ import appCss from "../styles.css?url";
 import { SiteShell } from "@/components/SiteShell";
 import { Toaster } from "@/components/ui/sonner";
 import { company } from "@/lib/site";
+import { LiveChat } from "@/components/LiveChat";
 
 function NotFoundComponent() {
   return (
@@ -135,6 +136,7 @@ function RootComponent() {
       <SiteShell>
         <Outlet />
       </SiteShell>
+      <LiveChat />
       <Toaster />
     </QueryClientProvider>
   );
