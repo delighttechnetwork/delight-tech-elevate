@@ -42,7 +42,7 @@ export function LiveChat() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100]">
+    <div className="fixed bottom-6 left-6 z-[100]">
       <AnimatePresence>
         {isOpen && (
           <motion.div
