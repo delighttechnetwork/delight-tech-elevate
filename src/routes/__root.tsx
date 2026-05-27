@@ -5,6 +5,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -137,9 +138,9 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const router = useRouter();
+  const routerState = useRouterState();
   const [isInitialLoading, setIsInitialLoading] = React.useState(true);
-  const isNavigating = router.state.status === "pending";
+  const isNavigating = routerState.status === "pending";
   const isLoading = isInitialLoading || isNavigating;
 
   React.useEffect(() => {
@@ -160,23 +161,36 @@ function RootComponent() {
     canvas.width = 32;
     canvas.height = 32;
     const ctx = canvas.getContext("2d");
-    const img = new Image();
-    img.src = logo;
 
     const animate = () => {
       if (!ctx) return;
-      rotation = (rotation + 5) % 360;
+      rotation = (rotation + 10) % 360;
       ctx.clearRect(0, 0, 32, 32);
+
+      // Draw background (optional, let's keep it clean)
       ctx.save();
       ctx.translate(16, 16);
       ctx.rotate((rotation * Math.PI) / 180);
-      ctx.drawImage(img, -16, -16, 32, 32);
+
+      // Draw a simple bulb shape or just use a character/path
+      ctx.fillStyle = "#3b82f6"; // primary color
+      ctx.beginPath();
+      // Simple bulb-like path
+      ctx.arc(0, -4, 8, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillRect(-4, 2, 8, 6);
+
+      // Add a glow
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = "#fff";
+
       ctx.restore();
+
       favicon.href = canvas.toDataURL("image/png");
       animationFrame = requestAnimationFrame(animate);
     };
 
-    img.onload = () => animate();
+    animate();
 
     return () => {
       cancelAnimationFrame(animationFrame);

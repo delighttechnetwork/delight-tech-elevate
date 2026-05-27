@@ -1,5 +1,6 @@
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Lightbulb } from "lucide-react";
 import logo from "@/assets/logo.jpg";
 import { company } from "@/lib/site";
 
@@ -27,18 +28,41 @@ export function LoadingScreen({ isVisible }: { isVisible: boolean }) {
               className="absolute -inset-8 bg-primary/30 blur-3xl rounded-full"
             />
 
-            {/* Rotating Logo */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-              className="relative size-24 md:size-32 rounded-3xl overflow-hidden shadow-2xl border border-white/10"
-            >
+            {/* Static Logo Background */}
+            <div className="relative size-24 md:size-32 rounded-3xl overflow-hidden shadow-2xl border border-white/10 opacity-50 grayscale">
               <img src={logo} alt="" className="size-full object-cover" />
-            </motion.div>
+            </div>
+
+            {/* Rotating Bulb */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <motion.div
+                animate={{
+                  rotate: 360,
+                  scale: [1, 1.1, 1],
+                  filter: ["drop-shadow(0 0 0px #fff)", "drop-shadow(0 0 20px #fff)", "drop-shadow(0 0 0px #fff)"]
+                }}
+                transition={{
+                  rotate: {
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "linear",
+                  },
+                  scale: {
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
+                  filter: {
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }
+                }}
+                className="text-white"
+              >
+                <Lightbulb size={48} fill="currentColor" className="text-primary" />
+              </motion.div>
+            </div>
           </div>
 
           <motion.div
