@@ -1,3 +1,4 @@
+import * as React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -136,9 +137,9 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
   const [isInitialLoading, setIsInitialLoading] = React.useState(true);
-  const routerState = useRouterState();
-  const isNavigating = routerState.status === "pending";
+  const isNavigating = router.state.status === "pending";
   const isLoading = isInitialLoading || isNavigating;
 
   React.useEffect(() => {
