@@ -9,10 +9,12 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import logo from "@/assets/logo.jpg";
 import { SiteShell } from "@/components/SiteShell";
 import { Toaster } from "@/components/ui/sonner";
 import { company } from "@/lib/site";
 import { LiveChat } from "@/components/LiveChat";
+import { LoadingScreen } from "@/components/LoadingScreen";
 
 function NotFoundComponent() {
   return (
@@ -106,6 +108,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "canonical", href: "https://delighttechnetwork.com" },
+      { rel: "icon", href: logo, id: "favicon" },
+      { rel: "apple-touch-icon", href: logo },
+      { rel: "manifest", href: "/site.webmanifest" },
     ],
     scripts: [{ type: "application/ld+json", children: JSON.stringify(orgJsonLd) }],
   }),
@@ -131,8 +136,57 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const [isInitialLoading, setIsInitialLoading] = React.useState(true);
+  const routerState = useRouterState();
+  const isNavigating = routerState.status === "pending";
+  const isLoading = isInitialLoading || isNavigating;
+
+  React.useEffect(() => {
+    // Artificial delay for premium feel and to ensure all assets are ready
+    const timer = setTimeout(() => setIsInitialLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Animated Favicon Logic
+  React.useEffect(() => {
+    let animationFrame: number;
+    let rotation = 0;
+    const favicon = document.getElementById("favicon") as HTMLLinkElement;
+
+    if (!favicon || !isLoading) return;
+
+    const canvas = document.createElement("canvas");
+    canvas.width = 32;
+    canvas.height = 32;
+    const ctx = canvas.getContext("2d");
+    const img = new Image();
+    img.src = logo;
+
+    const animate = () => {
+      if (!ctx) return;
+      rotation = (rotation + 5) % 360;
+      ctx.clearRect(0, 0, 32, 32);
+      ctx.save();
+      ctx.translate(16, 16);
+      ctx.rotate((rotation * Math.PI) / 180);
+      ctx.drawImage(img, -16, -16, 32, 32);
+      ctx.restore();
+      favicon.href = canvas.toDataURL("image/png");
+      animationFrame = requestAnimationFrame(animate);
+    };
+
+    img.onload = () => animate();
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+      // Reset favicon
+      if (favicon) favicon.href = logo;
+    };
+  }, [isLoading]);
+
   return (
     <QueryClientProvider client={queryClient}>
+      <LoadingScreen isVisible={isLoading} />
       <SiteShell>
         <Outlet />
       </SiteShell>
