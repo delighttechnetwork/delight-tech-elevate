@@ -39,7 +39,11 @@ export function LoadingScreen({ isVisible }: { isVisible: boolean }) {
                 animate={{
                   rotate: 360,
                   scale: [1, 1.1, 1],
-                  filter: ["drop-shadow(0 0 0px #fff)", "drop-shadow(0 0 20px #fff)", "drop-shadow(0 0 0px #fff)"]
+                  filter: [
+                    "drop-shadow(0 0 0px #fff)",
+                    "drop-shadow(0 0 20px #fff)",
+                    "drop-shadow(0 0 0px #fff)",
+                  ],
                 }}
                 transition={{
                   rotate: {
@@ -56,7 +60,7 @@ export function LoadingScreen({ isVisible }: { isVisible: boolean }) {
                     duration: 1.5,
                     repeat: Infinity,
                     ease: "easeInOut",
-                  }
+                  },
                 }}
                 className="text-white"
               >

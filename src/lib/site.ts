@@ -285,9 +285,26 @@ export type Project = {
   category: "Web" | "Branding" | "Print" | "Repair";
   description: string;
   tags: string[];
+  image?: string;
 };
 
 export const projects: Project[] = [
+  {
+    title: "Reviving Fire Ministry Int'l",
+    category: "Web",
+    description:
+      "A spiritual portal and community platform designed to ignite revival and connect the global ministry.",
+    tags: ["React", "Start", "Branding"],
+    image: "/portfolio/reviving-fire.jpg",
+  },
+  {
+    title: "YSJ Farm Limited",
+    category: "Web",
+    description:
+      "Premium agricultural platform for trusted broiler production and supply chain management in Ibadan.",
+    tags: ["Agro-Tech", "E-commerce"],
+    image: "/portfolio/ysj-farm.jpg",
+  },
   {
     title: "Heritage Mall Directory Web App",
     category: "Web",

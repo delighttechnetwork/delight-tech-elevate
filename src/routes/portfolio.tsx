@@ -86,9 +86,18 @@ function PortfolioPage() {
                 onClick={() => setOpen(projects.indexOf(p))}
                 className={`group text-left relative overflow-hidden rounded-3xl glass aspect-[4/5] ${i % 5 === 0 ? "sm:row-span-2 sm:aspect-[4/9]" : ""}`}
               >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${grads[i % grads.length]} opacity-80`}
-                />
+                {p.image ? (
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    className="absolute inset-0 size-full object-cover transition duration-500 group-hover:scale-110"
+                  />
+                ) : (
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${grads[i % grads.length]} opacity-80`}
+                  />
+                )}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300" />
                 <div className="absolute inset-0 grid-pattern opacity-20" />
                 <div className="absolute inset-0 p-6 flex flex-col justify-between text-white">
                   <div className="flex items-center justify-between">
@@ -129,9 +138,18 @@ function PortfolioPage() {
         <DialogContent className="max-w-2xl glass border-border/60">
           {open !== null && (
             <>
-              <div
-                className={`h-56 rounded-xl bg-gradient-to-br ${grads[open % grads.length]} relative overflow-hidden`}
-              >
+              <div className="h-64 sm:h-80 rounded-xl relative overflow-hidden bg-muted">
+                {projects[open].image ? (
+                  <img
+                    src={projects[open].image}
+                    alt={projects[open].title}
+                    className="absolute inset-0 size-full object-cover"
+                  />
+                ) : (
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${grads[open % grads.length]} opacity-80`}
+                  />
+                )}
                 <div className="absolute inset-0 grid-pattern opacity-20" />
               </div>
               <DialogTitle className="text-2xl">{projects[open].title}</DialogTitle>
