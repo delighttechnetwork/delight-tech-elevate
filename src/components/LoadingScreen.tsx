@@ -9,6 +9,7 @@ export function LoadingScreen({ isVisible }: { isVisible: boolean }) {
     <AnimatePresence>
       {isVisible && (
         <motion.div
+          id="loading-screen"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
           className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#0b1020]"

@@ -306,6 +306,34 @@ export const projects: Project[] = [
     image: "/portfolio/ysj-farm.jpg",
   },
   {
+    title: "Stronghold of David",
+    category: "Branding",
+    description: "Modern visual identity and logo design for a vibrant ministry.",
+    tags: ["Logo", "Minimalism"],
+    image: "/portfolio/stronghold-logo.png",
+  },
+  {
+    title: "Temmy's Kitchen",
+    category: "Print",
+    description: "Enticing food flyer design highlighting signature dishes and services.",
+    tags: ["Flyer", "Food & Beverage"],
+    image: "/portfolio/temmys-flyer.jpg",
+  },
+  {
+    title: "YSJ Farm Identity",
+    category: "Print",
+    description: "Professional corporate ID cards for staff and management.",
+    tags: ["ID Card", "Branding"],
+    image: "/portfolio/ysj-id-card.jpg",
+  },
+  {
+    title: "YSJ Farm Digital Assets",
+    category: "Branding",
+    description: "Cohesive social media assets and Facebook cover design.",
+    tags: ["Social Media", "Cover Photo"],
+    image: "/portfolio/ysj-facebook-cover.jpg",
+  },
+  {
     title: "Heritage Mall Directory Web App",
     category: "Web",
     description:
